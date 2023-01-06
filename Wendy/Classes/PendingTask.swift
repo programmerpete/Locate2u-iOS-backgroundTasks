@@ -12,7 +12,7 @@ public protocol PendingTask {
     var createdAt: Date? { get set } // How the order is determined by the task runner. Just like taskId, this is nil until the PendingTask is added to Wendy.
 
     func runTask(complete: @escaping (Error?) -> Void)
-    func isReadyToRun() -> Bool
+    func isReadyToRun() async -> Bool
 }
 
 public extension PendingTask {

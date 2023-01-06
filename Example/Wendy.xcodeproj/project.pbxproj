@@ -12,6 +12,38 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		A7165EDC5F922A4114BA5EAD /* Pods_Wendy_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8E5425B4B841F6DAC94C636 /* Pods_Wendy_Tests.framework */; };
+		DC6A18AA28D888FD00797B59 /* PendingTasksRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A188128D888FD00797B59 /* PendingTasksRunner.swift */; };
+		DC6A18AB28D888FD00797B59 /* LogUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A188328D888FD00797B59 /* LogUtil.swift */; };
+		DC6A18AC28D888FD00797B59 /* Fatal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A188428D888FD00797B59 /* Fatal.swift */; };
+		DC6A18AD28D888FD00797B59 /* PendingTasksUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A188528D888FD00797B59 /* PendingTasksUtil.swift */; };
+		DC6A18AE28D888FD00797B59 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = DC6A188628D888FD00797B59 /* .gitkeep */; };
+		DC6A18AF28D888FD00797B59 /* PendingTask+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A188828D888FD00797B59 /* PendingTask+Extensions.swift */; };
+		DC6A18B028D888FD00797B59 /* _PendingTaskError+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A188928D888FD00797B59 /* _PendingTaskError+Extensions.swift */; };
+		DC6A18B128D888FD00797B59 /* _PendingTask+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A188A28D888FD00797B59 /* _PendingTask+Extensions.swift */; };
+		DC6A18B228D888FD00797B59 /* PendingTaskError+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A188B28D888FD00797B59 /* PendingTaskError+Extensions.swift */; };
+		DC6A18B328D888FD00797B59 /* _PersistedPendingTask+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A188C28D888FD00797B59 /* _PersistedPendingTask+Extension.swift */; };
+		DC6A18B428D888FD00797B59 /* _BundleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A188D28D888FD00797B59 /* _BundleExtensions.swift */; };
+		DC6A18B528D888FD00797B59 /* _PersistedPendingTaskError+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A188E28D888FD00797B59 /* _PersistedPendingTaskError+Extensions.swift */; };
+		DC6A18B628D888FD00797B59 /* ReasonPendingTaskSkipped.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A189028D888FD00797B59 /* ReasonPendingTaskSkipped.swift */; };
+		DC6A18B728D888FD00797B59 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A189128D888FD00797B59 /* Collection.swift */; };
+		DC6A18B828D888FD00797B59 /* PendingTasksRunnerResult+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A189228D888FD00797B59 /* PendingTasksRunnerResult+Testing.swift */; };
+		DC6A18B928D888FD00797B59 /* WendyUIBackgroundFetchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A189328D888FD00797B59 /* WendyUIBackgroundFetchResult.swift */; };
+		DC6A18BA28D888FD00797B59 /* WendyUIBackgroundFetchResult+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A189428D888FD00797B59 /* WendyUIBackgroundFetchResult+Testing.swift */; };
+		DC6A18BB28D888FD00797B59 /* TaskRunResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A189528D888FD00797B59 /* TaskRunResult.swift */; };
+		DC6A18BC28D888FD00797B59 /* PendingTasksRunnerResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A189628D888FD00797B59 /* PendingTasksRunnerResult.swift */; };
+		DC6A18BD28D888FD00797B59 /* RunAllTasksFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A189728D888FD00797B59 /* RunAllTasksFilter.swift */; };
+		DC6A18BE28D888FD00797B59 /* Wendy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A189828D888FD00797B59 /* Wendy.swift */; };
+		DC6A18BF28D888FD00797B59 /* PendingTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A189928D888FD00797B59 /* PendingTask.swift */; };
+		DC6A18C028D888FD00797B59 /* WendyConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A189A28D888FD00797B59 /* WendyConfig.swift */; };
+		DC6A18C128D888FD00797B59 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A189D28D888FD00797B59 /* CoreDataManager.swift */; };
+		DC6A18C228D888FD00797B59 /* PendingTasksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A189E28D888FD00797B59 /* PendingTasksManager.swift */; };
+		DC6A18C328D888FD00797B59 /* PendingTaskError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A189F28D888FD00797B59 /* PendingTaskError.swift */; };
+		DC6A18C428D888FD00797B59 /* PendingTaskError+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A18A028D888FD00797B59 /* PendingTaskError+Testing.swift */; };
+		DC6A18C528D888FD00797B59 /* PendingTaskStatusListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A18A228D888FD00797B59 /* PendingTaskStatusListener.swift */; };
+		DC6A18C628D888FD00797B59 /* TaskRunnerListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A18A328D888FD00797B59 /* TaskRunnerListener.swift */; };
+		DC6A18C728D888FD00797B59 /* PendingTasksFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A18A528D888FD00797B59 /* PendingTasksFactory.swift */; };
+		DC6A18C828D888FD00797B59 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = DC6A18A728D888FD00797B59 /* .gitkeep */; };
+		DC6A18C928D888FD00797B59 /* Wendy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC6A18A828D888FD00797B59 /* Wendy.xcdatamodeld */; };
 		F73E96E4206EDF8500E7306F /* ExampleAppPendingTasksFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73E96E3206EDF8500E7306F /* ExampleAppPendingTasksFactory.swift */; };
 		F73E96E9206EE7B400E7306F /* PendingTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73E96E8206EE7B400E7306F /* PendingTaskTableViewCell.swift */; };
 		F75239302090FD2200E2D76A /* CreateGroceryListItemPendingTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752392F2090FD2200E2D76A /* CreateGroceryListItemPendingTask.swift */; };
@@ -60,6 +92,38 @@
 		B533CAD2A20CDCB0F96083DC /* Pods-Wendy_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wendy_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wendy_Example/Pods-Wendy_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		C58F89ABC70B4B2BACEBE473 /* Pods-Wendy-iOS_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wendy-iOS_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wendy-iOS_Tests/Pods-Wendy-iOS_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D0288639D2D438127C7647AB /* Pods-Wendy_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wendy_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wendy_Example/Pods-Wendy_Example.release.xcconfig"; sourceTree = "<group>"; };
+		DC6A188128D888FD00797B59 /* PendingTasksRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingTasksRunner.swift; sourceTree = "<group>"; };
+		DC6A188328D888FD00797B59 /* LogUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogUtil.swift; sourceTree = "<group>"; };
+		DC6A188428D888FD00797B59 /* Fatal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fatal.swift; sourceTree = "<group>"; };
+		DC6A188528D888FD00797B59 /* PendingTasksUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingTasksUtil.swift; sourceTree = "<group>"; };
+		DC6A188628D888FD00797B59 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		DC6A188828D888FD00797B59 /* PendingTask+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PendingTask+Extensions.swift"; sourceTree = "<group>"; };
+		DC6A188928D888FD00797B59 /* _PendingTaskError+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_PendingTaskError+Extensions.swift"; sourceTree = "<group>"; };
+		DC6A188A28D888FD00797B59 /* _PendingTask+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_PendingTask+Extensions.swift"; sourceTree = "<group>"; };
+		DC6A188B28D888FD00797B59 /* PendingTaskError+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PendingTaskError+Extensions.swift"; sourceTree = "<group>"; };
+		DC6A188C28D888FD00797B59 /* _PersistedPendingTask+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_PersistedPendingTask+Extension.swift"; sourceTree = "<group>"; };
+		DC6A188D28D888FD00797B59 /* _BundleExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _BundleExtensions.swift; sourceTree = "<group>"; };
+		DC6A188E28D888FD00797B59 /* _PersistedPendingTaskError+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_PersistedPendingTaskError+Extensions.swift"; sourceTree = "<group>"; };
+		DC6A189028D888FD00797B59 /* ReasonPendingTaskSkipped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReasonPendingTaskSkipped.swift; sourceTree = "<group>"; };
+		DC6A189128D888FD00797B59 /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		DC6A189228D888FD00797B59 /* PendingTasksRunnerResult+Testing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PendingTasksRunnerResult+Testing.swift"; sourceTree = "<group>"; };
+		DC6A189328D888FD00797B59 /* WendyUIBackgroundFetchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WendyUIBackgroundFetchResult.swift; sourceTree = "<group>"; };
+		DC6A189428D888FD00797B59 /* WendyUIBackgroundFetchResult+Testing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WendyUIBackgroundFetchResult+Testing.swift"; sourceTree = "<group>"; };
+		DC6A189528D888FD00797B59 /* TaskRunResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRunResult.swift; sourceTree = "<group>"; };
+		DC6A189628D888FD00797B59 /* PendingTasksRunnerResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingTasksRunnerResult.swift; sourceTree = "<group>"; };
+		DC6A189728D888FD00797B59 /* RunAllTasksFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunAllTasksFilter.swift; sourceTree = "<group>"; };
+		DC6A189828D888FD00797B59 /* Wendy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wendy.swift; sourceTree = "<group>"; };
+		DC6A189928D888FD00797B59 /* PendingTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingTask.swift; sourceTree = "<group>"; };
+		DC6A189A28D888FD00797B59 /* WendyConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WendyConfig.swift; sourceTree = "<group>"; };
+		DC6A189D28D888FD00797B59 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		DC6A189E28D888FD00797B59 /* PendingTasksManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingTasksManager.swift; sourceTree = "<group>"; };
+		DC6A189F28D888FD00797B59 /* PendingTaskError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingTaskError.swift; sourceTree = "<group>"; };
+		DC6A18A028D888FD00797B59 /* PendingTaskError+Testing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PendingTaskError+Testing.swift"; sourceTree = "<group>"; };
+		DC6A18A228D888FD00797B59 /* PendingTaskStatusListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingTaskStatusListener.swift; sourceTree = "<group>"; };
+		DC6A18A328D888FD00797B59 /* TaskRunnerListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRunnerListener.swift; sourceTree = "<group>"; };
+		DC6A18A528D888FD00797B59 /* PendingTasksFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingTasksFactory.swift; sourceTree = "<group>"; };
+		DC6A18A728D888FD00797B59 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		DC6A18A928D888FD00797B59 /* Wendy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Wendy.xcdatamodel; sourceTree = "<group>"; };
 		E44E697F6DF98A26DA6784E6 /* Pods-Wendy-iOS_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wendy-iOS_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wendy-iOS_Example/Pods-Wendy-iOS_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		EB071B0A3710D27E7EC9CC35 /* Pods_Wendy_iOS_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wendy_iOS_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F70927A3206E96D500FC7C04 /* Wendy_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Wendy_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +190,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				DC6A187F28D888FD00797B59 /* Wendy */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for Wendy-iOS */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -214,6 +279,118 @@
 				F8E5425B4B841F6DAC94C636 /* Pods_Wendy_Tests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DC6A187F28D888FD00797B59 /* Wendy */ = {
+			isa = PBXGroup;
+			children = (
+				DC6A188028D888FD00797B59 /* Classes */,
+				DC6A18A628D888FD00797B59 /* Assets */,
+			);
+			name = Wendy;
+			path = ../Wendy;
+			sourceTree = "<group>";
+		};
+		DC6A188028D888FD00797B59 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				DC6A188128D888FD00797B59 /* PendingTasksRunner.swift */,
+				DC6A188228D888FD00797B59 /* Util */,
+				DC6A188628D888FD00797B59 /* .gitkeep */,
+				DC6A188728D888FD00797B59 /* Extensions */,
+				DC6A188F28D888FD00797B59 /* Type */,
+				DC6A189828D888FD00797B59 /* Wendy.swift */,
+				DC6A189928D888FD00797B59 /* PendingTask.swift */,
+				DC6A189A28D888FD00797B59 /* WendyConfig.swift */,
+				DC6A189B28D888FD00797B59 /* DB */,
+				DC6A18A128D888FD00797B59 /* Listeners */,
+				DC6A18A428D888FD00797B59 /* Factory */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		DC6A188228D888FD00797B59 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				DC6A188328D888FD00797B59 /* LogUtil.swift */,
+				DC6A188428D888FD00797B59 /* Fatal.swift */,
+				DC6A188528D888FD00797B59 /* PendingTasksUtil.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		DC6A188728D888FD00797B59 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DC6A188828D888FD00797B59 /* PendingTask+Extensions.swift */,
+				DC6A188928D888FD00797B59 /* _PendingTaskError+Extensions.swift */,
+				DC6A188A28D888FD00797B59 /* _PendingTask+Extensions.swift */,
+				DC6A188B28D888FD00797B59 /* PendingTaskError+Extensions.swift */,
+				DC6A188C28D888FD00797B59 /* _PersistedPendingTask+Extension.swift */,
+				DC6A188D28D888FD00797B59 /* _BundleExtensions.swift */,
+				DC6A188E28D888FD00797B59 /* _PersistedPendingTaskError+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DC6A188F28D888FD00797B59 /* Type */ = {
+			isa = PBXGroup;
+			children = (
+				DC6A189028D888FD00797B59 /* ReasonPendingTaskSkipped.swift */,
+				DC6A189128D888FD00797B59 /* Collection.swift */,
+				DC6A189228D888FD00797B59 /* PendingTasksRunnerResult+Testing.swift */,
+				DC6A189328D888FD00797B59 /* WendyUIBackgroundFetchResult.swift */,
+				DC6A189428D888FD00797B59 /* WendyUIBackgroundFetchResult+Testing.swift */,
+				DC6A189528D888FD00797B59 /* TaskRunResult.swift */,
+				DC6A189628D888FD00797B59 /* PendingTasksRunnerResult.swift */,
+				DC6A189728D888FD00797B59 /* RunAllTasksFilter.swift */,
+			);
+			path = Type;
+			sourceTree = "<group>";
+		};
+		DC6A189B28D888FD00797B59 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				DC6A189C28D888FD00797B59 /* Manager */,
+				DC6A189F28D888FD00797B59 /* PendingTaskError.swift */,
+				DC6A18A028D888FD00797B59 /* PendingTaskError+Testing.swift */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		DC6A189C28D888FD00797B59 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				DC6A189D28D888FD00797B59 /* CoreDataManager.swift */,
+				DC6A189E28D888FD00797B59 /* PendingTasksManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		DC6A18A128D888FD00797B59 /* Listeners */ = {
+			isa = PBXGroup;
+			children = (
+				DC6A18A228D888FD00797B59 /* PendingTaskStatusListener.swift */,
+				DC6A18A328D888FD00797B59 /* TaskRunnerListener.swift */,
+			);
+			path = Listeners;
+			sourceTree = "<group>";
+		};
+		DC6A18A428D888FD00797B59 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				DC6A18A528D888FD00797B59 /* PendingTasksFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		DC6A18A628D888FD00797B59 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				DC6A18A728D888FD00797B59 /* .gitkeep */,
+				DC6A18A828D888FD00797B59 /* Wendy.xcdatamodeld */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		F73E96E7206EE79700E7306F /* UITableViewCell */ = {
@@ -359,7 +536,9 @@
 			files = (
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				DC6A18C828D888FD00797B59 /* .gitkeep in Resources */,
 				F7B45F1C206E983F00BC547D /* Wendy.podspec in Resources */,
+				DC6A18AE28D888FD00797B59 /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,15 +667,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC6A18BD28D888FD00797B59 /* RunAllTasksFilter.swift in Sources */,
+				DC6A18BC28D888FD00797B59 /* PendingTasksRunnerResult.swift in Sources */,
 				F79F54B9208A568F007DC508 /* PendingTaskResolveErrorButton.swift in Sources */,
 				607FACD81AFB9204008FA782 /* MainViewController.swift in Sources */,
+				DC6A18B328D888FD00797B59 /* _PersistedPendingTask+Extension.swift in Sources */,
+				DC6A18BE28D888FD00797B59 /* Wendy.swift in Sources */,
+				DC6A18C428D888FD00797B59 /* PendingTaskError+Testing.swift in Sources */,
+				DC6A18B428D888FD00797B59 /* _BundleExtensions.swift in Sources */,
+				DC6A18C528D888FD00797B59 /* PendingTaskStatusListener.swift in Sources */,
+				DC6A18AC28D888FD00797B59 /* Fatal.swift in Sources */,
+				DC6A18B628D888FD00797B59 /* ReasonPendingTaskSkipped.swift in Sources */,
 				F73E96E9206EE7B400E7306F /* PendingTaskTableViewCell.swift in Sources */,
+				DC6A18B728D888FD00797B59 /* Collection.swift in Sources */,
+				DC6A18B228D888FD00797B59 /* PendingTaskError+Extensions.swift in Sources */,
+				DC6A18C228D888FD00797B59 /* PendingTasksManager.swift in Sources */,
 				F75239302090FD2200E2D76A /* CreateGroceryListItemPendingTask.swift in Sources */,
+				DC6A18AA28D888FD00797B59 /* PendingTasksRunner.swift in Sources */,
+				DC6A18C128D888FD00797B59 /* CoreDataManager.swift in Sources */,
+				DC6A18BA28D888FD00797B59 /* WendyUIBackgroundFetchResult+Testing.swift in Sources */,
+				DC6A18C728D888FD00797B59 /* PendingTasksFactory.swift in Sources */,
+				DC6A18B528D888FD00797B59 /* _PersistedPendingTaskError+Extensions.swift in Sources */,
+				DC6A18AD28D888FD00797B59 /* PendingTasksUtil.swift in Sources */,
+				DC6A18B828D888FD00797B59 /* PendingTasksRunnerResult+Testing.swift in Sources */,
+				DC6A18AB28D888FD00797B59 /* LogUtil.swift in Sources */,
+				DC6A18C328D888FD00797B59 /* PendingTaskError.swift in Sources */,
 				F787F15D23AE9DC4007EA1CE /* WendyCollectionIds.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				DC6A18C928D888FD00797B59 /* Wendy.xcdatamodeld in Sources */,
+				DC6A18B128D888FD00797B59 /* _PendingTask+Extensions.swift in Sources */,
+				DC6A18AF28D888FD00797B59 /* PendingTask+Extensions.swift in Sources */,
+				DC6A18B028D888FD00797B59 /* _PendingTaskError+Extensions.swift in Sources */,
 				F79F54B7208A5435007DC508 /* PendingTaskStatusUILabel.swift in Sources */,
+				DC6A18C628D888FD00797B59 /* TaskRunnerListener.swift in Sources */,
+				DC6A18C028D888FD00797B59 /* WendyConfig.swift in Sources */,
 				F73E96E4206EDF8500E7306F /* ExampleAppPendingTasksFactory.swift in Sources */,
+				DC6A18BF28D888FD00797B59 /* PendingTask.swift in Sources */,
+				DC6A18BB28D888FD00797B59 /* TaskRunResult.swift in Sources */,
 				F7EED056206967BA00F2B7AF /* AddGroceryListItemPendingTask.swift in Sources */,
+				DC6A18B928D888FD00797B59 /* WendyUIBackgroundFetchResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -748,6 +957,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DC6A18A828D888FD00797B59 /* Wendy.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DC6A18A928D888FD00797B59 /* Wendy.xcdatamodel */,
+			);
+			currentVersion = DC6A18A928D888FD00797B59 /* Wendy.xcdatamodel */;
+			path = Wendy.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 607FACC81AFB9204008FA782 /* Project object */;
 }
