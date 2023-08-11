@@ -9,14 +9,16 @@ internal class PendingTasksManager {
     
     internal func addGroupIdToPendingTasksWithoutGroupId() {
         let allTasksWithoutGroupIds = getAllTasks().filter({ $0.groupId == nil || $0.groupId == "" })
-        
+        var updateOccurred = false
         for task in allTasksWithoutGroupIds {
             if let taskId = task.taskId, let persistedPendingTask = getTaskByTaskId(taskId) {
                 persistedPendingTask.groupId = task.tag
+                updateOccurred = true
             }
         }
-        
-        CoreDataManager.shared.saveContext()
+        if updateOccurred {
+            CoreDataManager.shared.saveContext()
+        }
     }
 
     internal func insertPendingTask(_ task: PendingTask) -> PendingTask {
@@ -44,7 +46,7 @@ internal class PendingTasksManager {
             Fatal.preconditionFailure("Task: \(persistedPendingTask.pendingTask.describe()) does not belong to a group.")
         }
 
-        let context = CoreDataManager.shared.viewContext
+        let context = CoreDataManager.shared.privateContext
 
         let pendingTaskFetchRequest: NSFetchRequest<PersistedPendingTask> = PersistedPendingTask.fetchRequest()
         pendingTaskFetchRequest.predicate = NSPredicate(format: "groupId == %@", persistedPendingTask.groupId!)
@@ -72,7 +74,7 @@ internal class PendingTasksManager {
     }
 
     internal func getRandomTaskForTag(_ tag: String) -> PendingTask? {
-        let context = CoreDataManager.shared.viewContext
+        let context = CoreDataManager.shared.privateContext
 
         let pendingTaskFetchRequest: NSFetchRequest<PersistedPendingTask> = PersistedPendingTask.fetchRequest()
         pendingTaskFetchRequest.predicate = NSPredicate(format: "(tag == %@)", tag)
@@ -95,9 +97,22 @@ internal class PendingTasksManager {
         
         return result
     }
+    
+    internal func getPendingTasksCount() -> Int {
+        let viewContext = CoreDataManager.shared.privateContext
+        let pendingTaskFactory = Wendy.shared.pendingTasksFactory
+        var count = 0
+        viewContext.performAndWait {
+            do {
+                count = try viewContext.count(for:PersistedPendingTask.fetchRequest())
+            } catch {
+            }
+        }
+        return count
+    }
 
     internal func getAllTasks() -> [PendingTask] {
-        let viewContext = CoreDataManager.shared.viewContext
+        let viewContext = CoreDataManager.shared.privateContext
         let pendingTaskFactory = Wendy.shared.pendingTasksFactory
         
 //        do {
@@ -132,7 +147,7 @@ internal class PendingTasksManager {
     }
     
     internal func getExistingTasks(_ task: PendingTask) -> [PersistedPendingTask]? {
-        let context = CoreDataManager.shared.viewContext
+        let context = CoreDataManager.shared.privateContext
 
         let pendingTaskFetchRequest: NSFetchRequest<PersistedPendingTask> = PersistedPendingTask.fetchRequest()
 
@@ -187,7 +202,7 @@ internal class PendingTasksManager {
             return nil
         }
 
-        let context = CoreDataManager.shared.viewContext
+        let context = CoreDataManager.shared.privateContext
 
         let pendingTaskErrorFetchRequest: NSFetchRequest<PersistedPendingTaskError> = PersistedPendingTaskError.fetchRequest()
         pendingTaskErrorFetchRequest.predicate = NSPredicate(format: "pendingTask == %@", persistedPendingTask)
@@ -220,7 +235,7 @@ internal class PendingTasksManager {
     }
 
     internal func getAllErrors() -> [PendingTaskError] {
-        let viewContext = CoreDataManager.shared.viewContext
+        let viewContext = CoreDataManager.shared.privateContext
 
 //        do {
 //            let persistedPendingTaskErrors: [PersistedPendingTaskError] = try viewContext.fetch(PersistedPendingTaskError.fetchRequest()) as [PersistedPendingTaskError]
@@ -256,7 +271,7 @@ internal class PendingTasksManager {
     }
 
     internal func getTaskByTaskId(_ taskId: Double) -> PersistedPendingTask? {
-        let context = CoreDataManager.shared.viewContext
+        let context = CoreDataManager.shared.privateContext
 
         let pendingTaskFetchRequest: NSFetchRequest<PersistedPendingTask> = PersistedPendingTask.fetchRequest()
         pendingTaskFetchRequest.predicate = NSPredicate(format: "id == %f", taskId)
@@ -293,10 +308,21 @@ internal class PendingTasksManager {
     // Note: Make sure to keep the query at "delete this table item by ID _____".
     // Because of this scenario: The runner is running a task with ID 1. While the task is running a user decides to update that data. This results in having to run that PendingTask a 2nd time (if the running task is successful) to sync the newest changes. To assert this 2nd change, we take advantage of SQLite's unique constraint. On unique constraint collision we replace (update) the data in the database which results in all the PendingTask data being the same except for the ID being incremented. So, after the runner runs the task successfully and wants to delete the task here, it will not delete the task because the ID no longer exists. It has been incremented so the newest changes can be run.
     internal func deleteTask(_ taskId: Double) {
-        let context = CoreDataManager.shared.viewContext
+        let context = CoreDataManager.shared.privateContext
         if let persistedPendingTask = getTaskByTaskId(taskId) {
-            context.delete(persistedPendingTask)
-            CoreDataManager.shared.saveContext()
+            context.perform {
+                do {
+                    context.delete(persistedPendingTask)
+                    try context.save()
+                } catch {
+                    // Replace this implementation with code to handle the error appropriately.
+                    // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                    let nserror = error as NSError
+//                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                    NotificationCenter.default.post(name: Notification.Name("wendyCoreDataSaveContextError"), object: "Wendy Coredata error \(nserror), \(nserror.userInfo)")
+                    NotificationCenter.default.post(name: Notification.Name("wendyCoreDataSaveContextErrorPendingTaskUserInfo"), object: nserror.userInfo)
+                }
+            }
         }
     }
 
@@ -305,23 +331,34 @@ internal class PendingTasksManager {
             return
         }
 
-        let context = CoreDataManager.shared.viewContext
+        let context = CoreDataManager.shared.privateContext
         persistedPendingTask.setValue(createdAt, forKey: "createdAt")
         CoreDataManager.shared.saveContext()
     }
 
     internal func deletePendingTaskError(_ taskId: Double) -> Bool {
-        let context = CoreDataManager.shared.viewContext
+        let context = CoreDataManager.shared.privateContext
         if let persistedPendingTaskError = getTaskByTaskId(taskId)?.error {
-            context.delete(persistedPendingTaskError)
-            CoreDataManager.shared.saveContext()
+            context.performAndWait {
+                do {
+                    context.delete(persistedPendingTaskError)
+                    try context.save()
+                } catch {
+                    // Replace this implementation with code to handle the error appropriately.
+                    // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                    let nserror = error as NSError
+//                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                    NotificationCenter.default.post(name: Notification.Name("wendyCoreDataSaveContextError"), object: "Wendy Coredata error \(nserror), \(nserror.userInfo)")
+                    NotificationCenter.default.post(name: Notification.Name("wendyCoreDataSaveContextErrorPendingTaskUserInfo"), object: nserror.userInfo)
+                }
+            }
             return true
         }
         return false
     }
 
     internal func getTotalNumberOfTasksForRunnerToRun(filter: RunAllTasksFilter?) -> Int {
-        let context = CoreDataManager.shared.viewContext
+        let context = CoreDataManager.shared.privateContext
 
         let pendingTaskFetchRequest: NSFetchRequest<PersistedPendingTask> = PersistedPendingTask.fetchRequest()
 
@@ -330,36 +367,39 @@ internal class PendingTasksManager {
             keyValues = applyFilterPredicates(filter, to: keyValues)
         }
 
-        let predicates = keyValues.map { NSPredicate(format: $0.key, $0.value) }
-        pendingTaskFetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
-
-        do {
-            let pendingTasks: [PersistedPendingTask] = try context.fetch(pendingTaskFetchRequest)
-            return pendingTasks.count
-        } catch let error as NSError {
-//            Fatal.error("Error in Wendy while fetching data from database.", error: error)
-            return 0
+        var result = 0
+        context.performAndWait {
+            do {
+                let predicates = keyValues.map { NSPredicate(format: $0.key, $0.value) }
+                pendingTaskFetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+                let pendingTasks: [PersistedPendingTask] = try context.fetch(pendingTaskFetchRequest)
+                result = pendingTasks.count
+            } catch let error as NSError{}
         }
+        
+        return result
     }
 
     internal func getLastPendingTaskInGroup(_ groupId: String) -> PersistedPendingTask? {
-        let context = CoreDataManager.shared.viewContext
+        let context = CoreDataManager.shared.privateContext
 
         let pendingTaskFetchRequest: NSFetchRequest<PersistedPendingTask> = PersistedPendingTask.fetchRequest()
         pendingTaskFetchRequest.predicate = NSPredicate(format: "groupId == %@", groupId)
         pendingTaskFetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(PersistedPendingTask.createdAt), ascending: false)]
-
-        do {
-            let pendingTasks: [PersistedPendingTask] = try context.fetch(pendingTaskFetchRequest)
-            return pendingTasks.first
-        } catch let error as NSError {
-//            Fatal.error("Error in Wendy while fetching data from database.", error: error)
-            return nil
+        
+        var result: PersistedPendingTask? = nil
+        context.performAndWait {
+            do {
+                let pendingTasks: [PersistedPendingTask] = try context.fetch(pendingTaskFetchRequest)
+                result = pendingTasks.first
+            } catch let error as NSError{}
         }
+        
+        return result
     }
 
     internal func getNextTaskToRun(_ lastSuccessfulOrFailedTaskId: Double, filter: RunAllTasksFilter?) -> PendingTask? {
-        let context = CoreDataManager.shared.viewContext
+        let context = CoreDataManager.shared.privateContext
 
         let pendingTaskFetchRequest: NSFetchRequest<PersistedPendingTask> = PersistedPendingTask.fetchRequest()
 
@@ -371,17 +411,20 @@ internal class PendingTasksManager {
         let predicates = keyValues.map { NSPredicate(format: $0.key, $0.value) }
         pendingTaskFetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         pendingTaskFetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(PersistedPendingTask.createdAt), ascending: true)]
+        
+        var result: PendingTask? = nil
+        
+        context.performAndWait {
+            do {
+                let pendingTasks: [PersistedPendingTask] = try context.fetch(pendingTaskFetchRequest)
+                if pendingTasks.isEmpty { return }
+                let persistedPendingTask: PersistedPendingTask = pendingTasks[0]
 
-        do {
-            let pendingTasks: [PersistedPendingTask] = try context.fetch(pendingTaskFetchRequest)
-            if pendingTasks.isEmpty { return nil }
-            let persistedPendingTask: PersistedPendingTask = pendingTasks[0]
-
-            return persistedPendingTask.pendingTask
-        } catch let error as NSError {
-//            Fatal.error("Error in Wendy while fetching data from database.", error: error)
-            return nil
+                result = persistedPendingTask.pendingTask
+            } catch let error as NSError{}
         }
+        
+        return result
     }
 
     private func applyFilterPredicates(_ filter: RunAllTasksFilter, to keyValues: [String: NSObject]) -> [String: NSObject] {
