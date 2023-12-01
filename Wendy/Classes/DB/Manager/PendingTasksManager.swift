@@ -402,8 +402,16 @@ internal class PendingTasksManager {
         let context = CoreDataManager.shared.privateContext
 
         let pendingTaskFetchRequest: NSFetchRequest<PersistedPendingTask> = PersistedPendingTask.fetchRequest()
+        
+        var keyValues: [String: NSObject]
+        
+        if lastSuccessfulOrFailedTaskId == 0{
+            keyValues = ["id >= %@": lastSuccessfulOrFailedTaskId as NSObject, "manuallyRun = %@": NSNumber(value: false) as NSObject]
+        }
+        else{
+            keyValues = ["id > %@": lastSuccessfulOrFailedTaskId as NSObject, "manuallyRun = %@": NSNumber(value: false) as NSObject]
+        }
 
-        var keyValues = ["id > %@": lastSuccessfulOrFailedTaskId as NSObject, "manuallyRun = %@": NSNumber(value: false) as NSObject]
         if let filter = filter {
             keyValues = applyFilterPredicates(filter, to: keyValues)
         }
