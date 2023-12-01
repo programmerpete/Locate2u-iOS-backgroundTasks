@@ -403,13 +403,10 @@ internal class PendingTasksManager {
 
         let pendingTaskFetchRequest: NSFetchRequest<PersistedPendingTask> = PersistedPendingTask.fetchRequest()
         
-        var keyValues: [String: NSObject]
+        var keyValues: [String: NSObject] = ["id > %@": lastSuccessfulOrFailedTaskId as NSObject, "manuallyRun = %@": NSNumber(value: false) as NSObject]
         
         if lastSuccessfulOrFailedTaskId == 0{
             keyValues = ["id >= %@": lastSuccessfulOrFailedTaskId as NSObject, "manuallyRun = %@": NSNumber(value: false) as NSObject]
-        }
-        else{
-            keyValues = ["id > %@": lastSuccessfulOrFailedTaskId as NSObject, "manuallyRun = %@": NSNumber(value: false) as NSObject]
         }
 
         if let filter = filter {
